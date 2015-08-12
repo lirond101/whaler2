@@ -1,0 +1,192 @@
+.version.product /* version checker */
+{
+	color: #000017;
+	background-color: #BCA604;
+}
+
+@-ms-viewport
+{
+	width: 1080px;
+}
+
+@-webkit-viewport
+{
+	width: 1080px;
+}
+
+@-o-viewport
+{
+	width: 1080px;
+}
+
+@-moz-viewport
+{
+	width: 1080px;
+}
+
+@viewport
+{
+	width: 1080px;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 853px;
+	min-height: 639px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	padding: 189px 114px 1092px 113px;
+}
+
+#slideshowu232
+{
+	z-index: 2;
+	width: 0.01px;
+	height: 640px;
+	position: relative;
+}
+
+#u242
+{
+	position: absolute;
+	width: 853px;
+	height: 640px;
+	background-color: transparent;
+}
+
+#u242popup
+{
+	z-index: 3;
+}
+
+#u243
+{
+	z-index: 4;
+	width: 853px;
+	height: 640px;
+	border-style: none;
+	border-color: transparent;
+	background-color: #4F4F4F;
+	margin-right: -10000px;
+	position: relative;
+}
+
+#u243_img
+{
+	padding: 50px 66px 50px 67px;
+}
+
+#u258
+{
+	z-index: 6;
+	width: 853px;
+	height: 640px;
+	border-style: none;
+	border-color: transparent;
+	background-color: #4F4F4F;
+	margin-right: -10000px;
+	position: relative;
+}
+
+#u258_clip
+{
+	overflow: hidden;
+	width: 853px;
+	height: 640px;
+}
+
+#u258_img
+{
+	margin-left: -53px;
+	margin-right: -54px;
+}
+
+#u234
+{
+	position: absolute;
+	width: 130px;
+	background-color: transparent;
+	padding-bottom: 315px;
+	top: 51px;
+	left: 117px;
+}
+
+#u234popup
+{
+	z-index: 8;
+}
+
+#u235
+{
+	z-index: 9;
+	width: 60px;
+	height: 45px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+}
+
+#u261
+{
+	z-index: 11;
+	width: 60px;
+	height: 45px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	left: 70px;
+}
+
+#u235.SSSlideLinkSelected,#u261.SSSlideLinkSelected
+{
+	border-style: none;
+	border-color: transparent;
+	background-color: #4F4F4F;
+	width: 60px;
+	height: 45px;
+	min-height: 0px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u261_clip
+{
+	overflow: hidden;
+	width: 60px;
+	height: 45px;
+}
+
+#u261_img
+{
+	margin-left: -4px;
+	margin-right: -4px;
+}
+
+.SSFirstButton,.SSPreviousButton,.SSNextButton,.SSLastButton,.SSSlideLink,.SSCloseButton /* slideshowFreeStyle */
+{
+	cursor: pointer;
+}
+
+.SSSlideLoading /* slideshowFreeStyle */
+{
+	background: url("../images/loading.gif") no-repeat center center;
+}
+
+body
+{
+	position: relative;
+	min-width: 1080px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+<head>
+<link href="css/reset.css" type="text/css" rel="stylesheet">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<meta charset="utf-8">
+<title>google map</title>
+
+<style>
+#map_wrapper {
+    height: 1920px;
+	width:1080px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}
+.info_content{
+	width:180px;
+	height:70px;
+	font-size:2em;
+	text-align:center;
+	padding-left:10px;
+	color:#00537B;
+	padding-top:40px;
+
+}
+
+#bar{
+	width:1080px;
+	height:240px;
+	background-image:url(img/bottom_bar.png); 
+	background-repeat:no-repeat;
+	
+}
+#bar h1{
+	color:#fff;
+	text-align:center;
+	font-family:century gothic;
+	font-size:3em;
+	line-height:335px;
+}
+#close_gallery{position:absolute;
+margin-top:140px;
+margin-left:50px;
+}
+
+#swap_to_list{
+	    position:absolute;
+    left:880px;
+    top: 40px;
+    z-index:3;
+
+}
+
+#headline{
+	position:absolute;
+	  left:300px;
+	 top: 70px;
+    z-index:3;
+
+	
+}
+#filter{
+	    position:absolute;
+    left:20px;
+    top: 40px;
+    z-index:3;
+
+}
+.more-info {
+	display:none;
+	font-size:40px;
+	width:100%;
+	background:#FFF;
+	height:600px;
+}
+
+.fav_wrapper{
+	position:relative;
+	z-index:999;
+}
+
+.fav_btn{
+	z-index:9999; 
+	position:relative; 
+	width:90px; 
+	height:90px; 
+	display:block;
+	position:absolute;
+	margin-left:770px;
+	margin-top:310px; 
+}
+.additional_info {
+	background:#fff;
+	height:800px;
+	width:100%;
+	padding:10px;
+	font-size:60px;
+	display:none;
+}
+</style>
+<link href="js/slick/slick.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+
+<div id="map_wrapper">
+ <a href="#" id="filter"><img src="images/filter.png"></a>
+  <img id="headline" src="images/headline.png"> 
+   <div id="swap_to_list"><a href="list.html"><img src="images/list_link.png"></a></div>
+
+
+
+    <button id="addBTN" onclick = "addMarker('netanel dadon',-34.036300, 24.926300)" >Add Surfboard</button>
+	<input type="text" id="userName" >insert username</input>
+	<button id="myPos" onclick = "addMarkerInMyLoc()" >add surfboard in my position</button>
+    <div id="map_canvas" class="mapping"></div>
+    <div id="gallery" style="height:670px;width:1080px;position:absolute;">
+    
+    <div id="bar">
+     <button><img id="close_gallery" src="img/x.png" ></button>
+      <h1>5’4 28L al merrick biscuit</h1>
+        </div>
+    <div id="slider_img" style="width:1080px; background:#fff; z-index:9999; position:absolute"></div>
+    <div id="slider-slick" style="background:#fff;">
+      <div class="slick-slide" data-target="additional_info_0">
+      <img  class="fav_btn" src="images/favorites_blank.png" width="95" height="90">
+      	<img src="images/pic1.jpg">
+        <div class="more-info">more info</div>
+      </div>
+      <div class="slick-slide" data-target="additional_info_1">
+      <img  class="fav_btn" src="images/favorites_blank.png" width="95" height="90">
+      	<img src="images/pic2.jpg">
+        <div class="more-info">more info</div>
+      </div>
+      <div class="slick-slide" data-target="additional_info_2">
+      <img  class="fav_btn" src="images/favorites_blank.png" width="95" height="90">
+      	<img src="images/pic3.jpg">
+        <div class="more-info">more info</div>
+      </div>
+    </div>
+    <div class="additional_info" id="additional_info_0">This is the info section #0</div>  
+    <div class="additional_info" id="additional_info_1">This is the info section #1</div>   
+    <div class="additional_info" id="additional_info_2">This is the info section #2</div>
+    </div>
+</div>
+
+
+<!--slider-->
+<script src="js/slick/slick.js"></script>
+<script>
+var is_open = 0;
+$(function(){
+	$('#slider-slick').slick({
+	  centerMode: true,
+	  centerPadding: '85px',
+	  slidesToShow: 1,
+	  arrows: false,
+	  responsive: [
+		{
+		  breakpoint: 768,
+		  settings: {
+			arrows: false,
+			centerMode: true,
+			centerPadding: '40px',
+			slidesToShow: 1
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+			arrows: false,
+			centerMode: true,
+			centerPadding: '40px',
+			slidesToShow: 1
+		  }
+		}
+	  ]
+	});	
+	
+	$('.slick-slide').each(function(index, element) {
+        $(this).click(function(){
+			if (!is_open) {
+				$('#gallery').animate({'bottom': '1250px'}, 1000);
+				$('#filter').fadeOut(500);
+				$('#headline').fadeOut(500);
+				$('#swap_to_list').fadeOut(500);
+				var info = '#'+$(this).data('target');
+				$('.additional_info').hide();
+				$(info).show();
+				is_open = 1;
+			}
+			//$(this).find('.more-info').show();
+			//$('.more-info').show();
+		})
+    });
+})
+</script>
+<!--google map-->
+<script>
+
+	var map = null;
+	var markers = [];
+	var bounds;
+		
+jQuery(function($) {
+    // Asynchronously Load the map API 
+    var script = document.createElement('script');
+    script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&callback=initialize";
+    document.body.appendChild(script);
+});
+	
+	
+//initialize a map with the surfboards tags on it
+function initialize() {
+	
+	bounds = new google.maps.LatLngBounds();
+	map = new google.maps.Map(document.getElementById('map_canvas'), {
+          center: new google.maps.LatLng(-34.029000,24.920000),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+		  
+		  
+        });
+
+var refresh = document.getElementById('addBTN');
+    google.maps.event.addDomListener(refresh, 'click', refreshMap);
+	
+	refreshMap();
+	
+	// Automatically centre the map fitting all markers on the screen
+    map.fitBounds(bounds);
+	
+	// Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(14);
+        google.maps.event.removeListener(boundsListener);
+    });
+}
+
+	<!--close gallery-->
+	$("#bar").on("button").click(function(){
+		$("#gallery").animate({bottom:'-670px'});
+		$('#filter').fadeIn(500);
+		$('#headline').fadeIn(500);
+		$('#swap_to_list').fadeIn(500);
+		is_open = 0;
+    });
+
+function refreshMap(){
+	markers.push(['Alon nir', -34.036979,24.926669]);
+    markers.push([ 'Liron Dadon',-34.029297,24.920489]);
+    markers.push([ 'Rotrm malul',-34.041815,24.926326]);
+	markers.push([ 'Moshe',-34.044944,24.922893]);
+	markers.push([ 'Rani radzeli',-34.037548,24.917743]);
+	markers.push([ 'Haim',-34.044660,24.922206]);	
+	
+	// Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+		bounds.extend(position);
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0],
+			icon: 'img/whaler_big.png'
+	
+        });	
+		
+		<!--handler while clicking on marker : open its gallery, centerize the map, view content-->
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                var infoWindowContent = CreateContent(marker.title);
+				map.panTo(marker.position);
+				infoWindow.setContent(infoWindowContent);
+				infoWindow.open(map, marker);
+				$("#gallery").animate({bottom: '0px'});
+				
+            }
+        })(marker, i));
+
+        // Automatically centre the map fitting all markers on the screen
+        map.fitBounds(bounds);
+	}
+}
+
+function CreateContent(username){
+	var div = '<div class="info_content">' + '<h3>' + username + '</h3>' + '' + '</div>'
+	return div;
+}
+
+function addMarker(userName, lat, lng){	
+	markers.push([userName,lat,lng]);
+	var newPos = new google.maps.LatLng(lat,lng);
+	newMarker = new google.maps.Marker({
+		position: newPos,
+		map:map,
+		title: userName,
+		icon: 'img/whaler_big.png'
+	});
+	newMarker.setMap(map);
+	refreshMap();
+	alert("surfboard was added successfuly!");
+}
+	
+function addMarkerInMyLoc(){
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(success);
+	} else {
+	  error('Geo Location is not supported');
+	}
+}
+
+function success(position) {
+  var userName =  document.getElementById("userName").value;
+  addMarker(userName, position.coords.latitude, position.coords.longitude); 
+}
+
+function isInMarkers(userName){
+	var exist = false;
+	for( i = 0; i < markers.length; i++ ) {
+		if(markers[i][0] == userName){
+			exist = true;
+			break;
+		}
+	}	
+	return exist;
+}
+
+
+
+
+
+<!--favorite icons-->
+$('.fav_btn').each(function(index, element) {
+    $(this).click(function(){
+		if($(this).attr('src')=="images/favorites_blank.png"){
+			$(this).attr('src' , "images/favorites_full.png")
+		}
+		
+		else{
+			$(this).attr('src' , "images/favorites_blank.png")
+		}
+	})
+});
+
+</script>
+</body>
+</html>

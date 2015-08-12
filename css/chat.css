@@ -1,0 +1,61 @@
+.version.chat /* version checker */
+{
+	color: #000013;
+	background-color: #DF7B55;
+}
+
+@-ms-viewport
+{
+	width: 1080px;
+}
+
+@-webkit-viewport
+{
+	width: 1080px;
+}
+
+@-o-viewport
+{
+	width: 1080px;
+}
+
+@-moz-viewport
+{
+	width: 1080px;
+}
+
+@viewport
+{
+	width: 1080px;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 0px;
+	min-height: 0px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	padding-top: 240px;
+	padding-right: 1080px;
+	padding-bottom: 1680px;
+}
+
+body
+{
+	position: relative;
+	min-width: 1080px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

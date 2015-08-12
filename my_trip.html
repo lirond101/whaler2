@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/reset.css" type="text/css" rel="stylesheet">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+
+<link href="css/nav.css" type="text/css" rel="stylesheet">
+<link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<style>
+#wrapper{
+	width:1080px;
+	height:1920px;
+	background-image:url(images/profile_bg.jpg);
+	background-repeat:no-repeat;
+	padding:30px;
+	padding-top:50px;
+}
+
+#menu{
+	width:1080px;
+	height:400px;
+
+}
+
+#settings{
+	margin-left:810px;
+	position:absolute;
+	
+}
+
+article{
+	width:1020px;
+	height:228px;
+	background-color:#FFFFFF;
+	margin-bottom:25px;
+	font-family:century gothic;
+	border-radius:20px;
+	display:block;
+}
+
+article h1 {
+	font-size:60px;
+	color:#0C687F;
+	margin-left:75px;
+	float:left;
+	line-height:228px;
+	width:350px;
+}
+
+
+
+
+#list_link{
+	float:left;
+	margin-top:70px;
+	margin-left:118px;
+}
+
+#map_link{
+		float:left;
+	margin-top:45px;
+	margin-left:100px;
+}
+
+#delete1{
+		float:left;
+	margin-top:15px;
+	margin-left:85px;
+	line-height:228px;
+}
+#delete2{
+	float:left;
+	margin-top:15px;	
+	margin-left:85px;
+	line-height:228px;
+}
+#delete3{
+		float:left;
+	margin-top:15px;
+	margin-left:85px;
+	line-height:228px;
+}
+#ar_my_wishes {
+	display:none;
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="menu">
+  <a href="index.html"><img src="images/menu_back.png"></a>
+  <a id="settings" href="#"><img src="images/settings.png"></a>
+</div>
+
+<section>
+  <nav id="lol">
+    <div></div>
+    <ul>
+      <li data-xcoord="0px" data-width="210px" data-target="ar_my_trip" class="active">My trip</li>
+      <li data-xcoord="255px" data-width="290px" data-target="ar_my_wishes">My wishes</li>
+      <li data-xcoord="550px" data-width="290px" data-target="ar_my_quiver">My quiver</li>
+
+    </ul>
+  </nav>
+</section>
+<div id="ar_my_trip" class="ar_wrapper">
+  <article id="first">
+    <h1>Super Tubes</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete1"><img src="img/x.png"></a>
+    
+    
+  </article>
+  
+  <article id="second">
+    <h1>The Garden</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete2"><img src="img/x.png"></a>
+    
+    
+  </article>
+  
+  <article id="third">
+    <h1>Super tubes</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete3"><img src="img/x.png"></a>
+    
+    
+  </article>
+</div>
+
+
+<div id="ar_my_wishes" class="ar_wrapper">
+  <article id="first_wishes">
+    <h1>Super _wishes</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete1"><img src="img/x.png"></a>
+    
+    
+  </article>
+  
+  <article id="second_wishes">
+    <h1>The Garden</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete2"><img src="img/x.png"></a>
+    
+    
+  </article>
+  
+  <article id="third_wishes">
+    <h1>Super tubes</h1>
+    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
+    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
+    <a id="delete3"><img src="img/x.png"></a>
+    
+    
+  </article>
+</div>
+
+
+</div>
+
+<script>
+$("#delete1").click(function () {
+    $("#first").fadeOut(200);
+});
+
+$("#delete2").click(function () {
+    $("#second").fadeOut(200);
+});
+
+$("#delete3").click(function () {
+    $("#third").fadeOut(200);
+});
+</script>
+
+
+
+
+</body>
+</html>
