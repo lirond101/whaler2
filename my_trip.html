@@ -36,7 +36,7 @@
 	
 }
 
-article{
+#ar_my_trip article{
 	width:1020px;
 	height:228px;
 	background-color:#FFFFFF;
@@ -46,7 +46,7 @@ article{
 	display:block;
 }
 
-article h1 {
+#ar_my_trip article h1 {
 	font-size:60px;
 	color:#0C687F;
 	margin-left:75px;
@@ -91,6 +91,46 @@ article h1 {
 #ar_my_wishes {
 	display:none;
 }
+
+#ar_my_wishes article{
+	width:1020px;
+	height:228px;
+	background-color:#FFFFFF;
+	margin-bottom:25px;
+	font-family:century gothic;
+	border-radius:20px;
+	display:block;
+	line-height:70px;
+	
+	
+}
+
+#ar_my_wishes article h1 {
+	font-size:48px;
+	color:#0C687F;
+	margin-left:75px;
+	float:left;
+	width:500px;
+	margin-top:45PX;
+	
+}
+
+#ar_my_wishes article h3{
+	clear:both;
+	font-size:36px;
+	color:#0C687F;
+	margin-left:75px;
+}
+
+#delete_wish,#delete2_wish,#delete3_wish{
+
+	margin-left:950px;
+
+	
+}
+
+
+
 </style>
 </head>
 
@@ -107,12 +147,15 @@ article h1 {
     <div></div>
     <ul>
       <li data-xcoord="0px" data-width="210px" data-target="ar_my_trip" class="active">My trip</li>
-      <li data-xcoord="255px" data-width="290px" data-target="ar_my_wishes">My wishes</li>
-      <li data-xcoord="550px" data-width="290px" data-target="ar_my_quiver">My quiver</li>
+      <li data-xcoord="250px" data-width="290px" data-target="ar_my_wishes">My wishes</li>
+      <li data-xcoord="545px" data-width="290px" data-target="ar_my_quiver">My quiver</li>
 
     </ul>
   </nav>
 </section>
+
+
+<!--trip-->
 <div id="ar_my_trip" class="ar_wrapper">
   <article id="first">
     <h1>Super Tubes</h1>
@@ -133,7 +176,7 @@ article h1 {
   </article>
   
   <article id="third">
-    <h1>Super tubes</h1>
+    <h1>Pipeline</h1>
     <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
     <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
     <a id="delete3"><img src="img/x.png"></a>
@@ -142,31 +185,31 @@ article h1 {
   </article>
 </div>
 
-
+<!--wishes-->
 <div id="ar_my_wishes" class="ar_wrapper">
   <article id="first_wishes">
-    <h1>Super _wishes</h1>
-    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
-    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
-    <a id="delete1"><img src="img/x.png"></a>
+    <h1>5'4 Al merrick biscuit</h1>
+    <h3>Uploaded by alon nir</h3>
     
+      <a id="delete_wish"><img src="img/x.png"></a>
+   
     
   </article>
   
   <article id="second_wishes">
-    <h1>The Garden</h1>
-    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
-    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
-    <a id="delete2"><img src="img/x.png"></a>
+    <h1>5'10 Al merrick whip</h1>
+    <h3>Uploaded by liron dadon</h3>
+    
+    <a id="delete2_wish"><img src="img/x.png"></a>
     
     
   </article>
   
   <article id="third_wishes">
-    <h1>Super tubes</h1>
-    <a id="list_link" href="list.html"><img src="images/list_menu.png"></a>
-    <a id="map_link" href="map.html"><img src="images/map_menu.png"></a>
-    <a id="delete3"><img src="img/x.png"></a>
+    <h1>5'8 Al ALX</h1>
+    <h3>Uploaded by moshe peretz</h3>
+    
+    <a id="delete3_wish"><img src="img/x.png"></a>
     
     
   </article>
@@ -176,6 +219,7 @@ article h1 {
 </div>
 
 <script>
+<!--trip delete-->
 $("#delete1").click(function () {
     $("#first").fadeOut(200);
 });
@@ -186,6 +230,21 @@ $("#delete2").click(function () {
 
 $("#delete3").click(function () {
     $("#third").fadeOut(200);
+});
+
+
+
+<!--wishes delete-->
+$("#delete_wish").click(function () {
+    $("#first_wishes").fadeOut(200);
+});
+
+$("#delete2_wish").click(function () {
+    $("#second_wishes").fadeOut(200);
+});
+
+$("#delete3_wish").click(function () {
+    $("#third_wishes").fadeOut(200);
 });
 </script>
 
