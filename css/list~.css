@@ -1,0 +1,105 @@
+.version.list /* version checker */
+{
+	color: #0000F8;
+	background-color: #217F06;
+}
+
+@-ms-viewport
+{
+	width: 1080px;
+}
+
+@-webkit-viewport
+{
+	width: 1080px;
+}
+
+@-o-viewport
+{
+	width: 1080px;
+}
+
+@-moz-viewport
+{
+	width: 1080px;
+}
+
+@viewport
+{
+	width: 1080px;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 1080px;
+	min-height: 1919px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	padding-bottom: 1px;
+}
+
+#pu504
+{
+	width: 0.01px;
+	margin-right: -10000px;
+	margin-top: -382px;
+}
+
+#u504
+{
+	z-index: 5;
+	width: 1080px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+}
+
+#u519
+{
+	z-index: 7;
+	width: 182px;
+	height: 156px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 465px;
+	left: 883px;
+	background: transparent url("../images/map_link.png") no-repeat left top;
+	background-size: contain;
+}
+
+#untitled
+{
+	width: 22px;
+	margin-right: -10000px;
+	margin-top: 935px;
+	left: 2324px;
+}
+
+#u564
+{
+	z-index: 2;
+	width: 1080px;
+	margin-right: -10000px;
+	margin-top: 3253px;
+}
+
+body
+{
+	position: relative;
+	min-width: 1080px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+	margin-bottom: -3253px;
+}
+
