@@ -74,23 +74,25 @@ function show_msg(id) {
 	w = '-' + w + 'px';
 	if (id.hasClass('chat_left')) {
 		id.css({'margin-left': w});
-		id.animate({'margin-left': '0'}, 200);
+		id.animate({'margin-left': '0'}, 400);
 	}
 	else {
 		id.css({'margin-right': w});
-		id.animate({'margin-right': '0'}, 200);
+		id.animate({'margin-right': '0'}, 400);
 	}
 }
 function new_msg(){
 	text = $('#input_text').val();
 	msg = '<span class="chat_msg chat_left">'+text+'</span>';
 	$('#chat_wrapper').append(msg);
-	show_msg($('#chat_wrapper span:last-child'));
+	//show_msg($('#chat_wrapper span:last-child'));
+	setTimeout(show_msg, 250, $('#chat_wrapper span:last-child'));
 	
 	reply = $('#chat_wrapper_pool span:first-child');
 	reply.detach().appendTo('#chat_wrapper')
 
-	setTimeout(show_msg, 2000, $('#chat_wrapper span:last-child'));
+	setTimeout(show_msg, 2500, $('#chat_wrapper span:last-child'));
+	$('#input_text').val('');
 }
 </script>
 </body>
