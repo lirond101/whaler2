@@ -3,25 +3,41 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+<link href="css/reset.css" type="text/css" rel="stylesheet">
 
 <style>
 
 
-#menu{
+#menu_wrapper{
 	width:1080px;
-	height:200px;
+	height:215px;
 	background-image:url(img/bottom_bar.png);
 	background-repeat:no-repeat;
 	padding-top:10px;
 }
-li{
+
+
+#menu{text-align:center;}
+
+#menu li{
+	width:216px;
+	height:100px;
 	float:left;
-	height:50px;
-	width:200px;
-	background-color:#B7B4B4;
-	
+	line-height:300px;
 	
 }
+
+#menu li img{
+	text-align:center;
+}
+
+
+.icons{
+	float:left;
+	line-height:300px;
+	margin-top:35px;
+}
+
 </style>
 </head>
 
@@ -29,20 +45,21 @@ li{
 <div id="menu_wrapper">
     <div id="menu">
     <ul>
-      <a href="#"><li></li></a>
-      <a href="#"><li></li></a>
-      <a href="index.html"><li><img id="logo_btn" src="images/home_btn.png"></li></a>
-      <a href="#"><li></li></a>
-      <a href="#"><li></li></a>
+      <a class="icons" href="#"><li></li></a>
+      <a class="icons" href="#"><li><img src="images/add.png"></li></a>
+      <a id="home" href="index.html"><li><img id="logo_btn" src="images/home_btn.png"></li></a>
+      <a class="icons" href="chat_history.html"><li><img src="images/msg.png"></li></a>
+      <a class="icons" href="my_trip.html"><li><img src="images/profile.png"></li></a>
 
-
+ </ul>
+    
+    </div>
 
 
 
 
       
-    </ul>
-    </div>
+   
     
 </div>
 </body>
