@@ -149,6 +149,9 @@
 	margin-right:48px;
 	margin-top:94px;	
 }
+
+
+
 .more{
 	clear:both;
 	margin-left:150px;
@@ -186,7 +189,7 @@
 }
 
 #myModal{
-	top:700px;
+	top:400px;
 	text-align:center;
 	border-radius:55px;
 
@@ -199,6 +202,26 @@ background-image:url(images/modal_bg.png);
 background-repeat:no-repeat;
 
 }
+
+
+#myModal2{
+	top:500px;
+	text-align:center;
+
+}
+
+
+.modal-content2{border-radius:30px;
+width:645px;
+height:750px;
+background-image:url(images/sell_bg.png);
+background-repeat:no-repeat;
+
+}
+
+
+
+
 
 
 
@@ -270,7 +293,7 @@ background-repeat:no-repeat;
     <a href="#" class="more" data-toggle="modal" data-target="#myModal"><img src="images/more.png"></a>     
       <a id="delete_wish"><img src="img/x.png"></a>
       
-              <!-- Modal -->
+                <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
     
@@ -295,6 +318,8 @@ background-repeat:no-repeat;
       </div>
     </div>
    
+    
+    
     
   </article>
   
@@ -332,8 +357,33 @@ background-repeat:no-repeat;
   <article id="first_quiver">
     <h1>5'4 al merrick biscuit</h1>
     
-   <a href="#" class="sell"><img src="images/sell.png"></a>    
-    <a id="delete1_quiver"><img src="img/x.png"></a>
+   <a href="#" class="sell" data-toggle="modal" data-target="#myModal2"><img src="images/sell.png"></a>    
+    <a id="delete_quiver"><img src="img/x.png"></a>
+    
+             <!-- Modal -->
+    <div id="myModal2" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content2">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+          </div>
+          <div class="modal-body">
+            <ul class="rslides">
+              <a href="#"><li><img src="images/yes.png" alt="" style="margin-top:325px;"></li></a>
+              <a href="#"><li><img src="images/no.png" alt=""></li></a>
+              
+            </ul>
+          </div>
+          </div>
+    
+      </div>
+    </div>
+   
+       
+    
     
     
   </article>
@@ -416,6 +466,9 @@ $("#delete3_quiver").click(function () {
  </ul>
     
     </div>
+    
+    
+    
     
     
 
