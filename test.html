@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/reset.css" type="text/css" rel="stylesheet">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="select_number_1" style="margin:100px;">
+	<div class="num_up">UP</div>
+    <div class="num_val">5</div>
+    <div class="num_down">DOWN</div>
+</div>
+
+
+<div id="select_number_2" style="margin:100px;">
+	<div class="num_up">UP</div>
+    <div class="num_val">5</div>
+    <div class="num_down">DOWN</div>
+</div>
+<script>
+$(function(){
+	$('#select_number_1 .num_up').click(function(){
+		current_val = Number($(this).parent().find('.num_val').html());
+		current_val+=0.1;
+		current_val = Math.round( current_val * 10 ) / 10;
+		$(this).parent().find('.num_val').html(current_val);
+	});
+	$('#select_number_1 .num_down').click(function(){
+		current_val = Number($(this).parent().find('.num_val').html());
+		current_val-=0.1;
+		current_val = Math.round( current_val * 10 ) / 10;
+		$(this).parent().find('.num_val').html(current_val);
+	});
+	
+	$('#select_number_2 .num_up').click(function(){
+		current_val = Number($(this).parent().find('.num_val').html());
+		current_val+=1;
+		$(this).parent().find('.num_val').html(current_val);
+	});
+	$('#select_number_2 .num_down').click(function(){
+		current_val = Number($(this).parent().find('.num_val').html());
+		current_val-=1;
+		$(this).parent().find('.num_val').html(current_val);
+	});
+})
+</script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
 <link href="css/reset.css" type="text/css" rel="stylesheet">
 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link href="css/menu_style.css" type="text/css" rel="stylesheet">
 
 <meta charset="utf-8">
 <title>google map</title>
@@ -290,14 +291,15 @@ jQuery(function($) {
 //initialize a map with the surfboards tags on it
 function initialize() {
 	
+	var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
+	
 	bounds = new google.maps.LatLngBounds();
 	map = new google.maps.Map(document.getElementById('map_canvas'), {
           center: new google.maps.LatLng(-34.029000,24.920000),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-		  
-		  
-		  
-        });
+          mapTypeId: google.maps.MapTypeId.ROADMAP		  
+   });
+   
+   map.setOptions({styles: styles});
 
 var refresh = document.getElementById('addBTN');
     google.maps.event.addDomListener(refresh, 'click', refreshMap);
@@ -426,5 +428,24 @@ $('.fav_btn').each(function(index, element) {
 
 
 </script>
+
+
+        <div id="menu_wrapper">
+    <div id="menu">
+    <ul>
+      <a class="icons" href="#"><li></li></a>
+      <a class="icons" href="#"><li><img src="images/add.png"></li></a>
+      <a id="home" href="index.html"><li><img id="logo_btn" src="images/home_btn.png"></li></a>
+      <a class="icons" href="chat_history.html"><li><img src="images/msg.png"></li></a>
+      <a class="icons" href="my_trip.html"><li><img src="images/profile.png"></li></a>
+
+ </ul>
+    
+    </div>
+   
+
+  </div>
+
+
 </body>
 </html>

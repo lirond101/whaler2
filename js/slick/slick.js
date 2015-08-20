@@ -136,6 +136,7 @@
             _.visibilityChange = 'visibilitychange';
             _.windowWidth = 0;
             _.windowTimer = null;
+			
 
             dataSettings = $(element).data('slick') || {};
 
