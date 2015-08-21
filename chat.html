@@ -15,16 +15,18 @@
 }
 #chat_wrapper {
 	padding-top:350px;
+	
 }
 .chat_msg {
 	background:#fff;
-	color:#000;
+	color:#7F7E7E;
+	font-family:century gothic;
 	padding:30px 30px 30px 60px;
 	text-align:left;
-	font-size:60px;
+	font-size:36px;
 	display:inline-block;
 	clear:both;
-	margin-bottom:30px;
+	margin-bottom:60px;
 	visibility:hidden;
 }
 .chat_left {
@@ -41,19 +43,69 @@
 }
 #input_text {
 	height:60px;
-	width:600px;
+	width:710px;
 	font-size:44px;
+	background:none;
+	border:none;
+	border-bottom:#FFFFFF thin solid;
+	color:#FFFFFF;
+	font-family:century gothic;
+	margin-left:80px;
+	margin-bottom:50px;
+	margin-right:40px;
+	float:left;
 }
+
+#send{
+	border:none;
+	background:none;
+	z-index:999;
+	margin-bottom:40px;
+	
+	
+}
+
+#send:focus{
+	outline: 0;
+}
+
+#input_text:focus{
+	outline: 0;
+}
+
 #my_msg button {
 	width:200px;
 	height:60px;
 	font-size:44px;
 }
+
+#menu_top{
+	width:1080px;
+
+	padding:30px;
+	padding-top:30px;
+
+}
+#settings{
+	float:right;
+	margin-right:60px;
+	line-height:100px;
+}
+#home{
+	line-height:200px;
+}
+
 </style>
 </head>
 
 <body>
 <div id="wrapper">
+
+ <div id="menu_top">
+  <a id="home" href="index.html"><img src="images/menu_back.png"></a>
+  <a id="settings" href="#"><img src="images/liron.png"></a>
+</div>
+
 	<div id="chat_wrapper_pool">
         <span class="chat_msg chat_right">Cool, chillin'... how you doin'?</span>
         <span class="chat_msg chat_right">Wanna hang out?</span>
@@ -63,7 +115,7 @@
     </div>
     <div id="my_msg">
         <input type="text" id="input_text">
-        <button value="Send" onClick="new_msg()"> 
+        <button id="send" value="Send" onClick="new_msg()"><img src="images/send.png"> </button>
     </div>
 </div>
 

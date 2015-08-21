@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#select_number_1 , #select_number_2{
+	float:left;
+	text-align:center;
+	font-size:60px;
+
+	color:#FFFFFF;
+	font-weight:bold;
+	z-index:999;
+	
+
+}
+
+.num_up{
+	width:70px;
+	height:50px;
+	background-image:url(../images/up.png);
+	background-repeat:no-repeat;
+	
+}
+
+
+.num_down{
+	width:70px;
+	height:50px;
+	background-image:url(../images/down.png);
+	background-repeat:no-repeat;
+	margin-top:7px;
+}
+
+#num_wr{
+	margin-right:40px;
+}

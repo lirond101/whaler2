@@ -3,13 +3,14 @@
 
 #menu_wrapper{
 	width:1080px;
-	height:230px;
+	height:300px;
 	background-image:url(../img/bottom_bar.png);
 	background-repeat:no-repeat;
-	padding-top:10px;
+	padding-top:40px;
 	position:fixed;
 	z-index:998;
 	bottom:0px;
+	
 }
 
 
@@ -21,6 +22,7 @@
 	float:left;
 	line-height:310px;
 	
+	
 }
 
 #menu li img{
@@ -30,11 +32,14 @@
 
 .icons{
 	float:left;
-	line-height:300px;
-	margin-top:35px;
+	line-height:250px;
+	margin-top:90px;
+
 }
 #home{
-	line-height:100px;
+	line-height:200px;
+	margin-top:30px;
+	
 	
 }
 
