@@ -98,7 +98,7 @@ margin-left:50px;
 	background:#fff;
 	height:1300px;
 	width:100%;
-	padding:10px;
+	padding-top:10px;
 	font-size:60px;
 	display:none;
 		font-family:century gothic;
@@ -107,6 +107,7 @@ margin-left:50px;
 	color:#093556;
 	line-height:normal;
 }
+
 
 
 
@@ -137,6 +138,9 @@ margin-left:50px;
 	margin-top:10px;
 }
 
+.slick-slide{ margin-right:50px;}
+
+
 
 
 </style>
@@ -157,9 +161,7 @@ margin-left:50px;
 
 
 
-    <button id="addBTN" onclick = "addMarker('netanel dadon',-34.036300, 24.926300)" >Add Surfboard</button>
-	<input type="text" id="userName" >insert username</input>
-	<button id="myPos" onclick = "addMarkerInMyLoc()" >add surfboard in my position</button>
+    
     <div id="map_canvas" class="mapping"></div>
     <div id="gallery" style="height:700px;width:1080px;position:absolute;">
     
@@ -260,7 +262,7 @@ $(function(){
 	$('.slick-slide').each(function(index, element) {
         $(this).click(function(){
 			if (!is_open) {
-				$('#gallery').animate({'bottom': '1300px'}, 1000);
+				$('#gallery').animate({'bottom': '1200px'}, 1000);
 				$('#filter').fadeOut(500);
 				$('#headline').fadeOut(500);
 				$('#swap_to_list').fadeOut(500);
@@ -301,9 +303,7 @@ function initialize() {
    
    map.setOptions({styles: styles});
 
-var refresh = document.getElementById('addBTN');
-    google.maps.event.addDomListener(refresh, 'click', refreshMap);
-	
+var refresh = 
 	refreshMap();
 	
 	// Automatically centre the map fitting all markers on the screen
