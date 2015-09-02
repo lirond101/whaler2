@@ -15,7 +15,8 @@
 }
 
 .num_up{
-	width:70px;
+	text-align:center;
+	width:90px;
 	height:50px;
 	background-image:url(../images/up.png);
 	background-repeat:no-repeat;
@@ -24,7 +25,8 @@
 
 
 .num_down{
-	width:70px;
+	text-align:center;
+	width:90px;
 	height:50px;
 	background-image:url(../images/down.png);
 	background-repeat:no-repeat;
@@ -32,5 +34,11 @@
 }
 
 #num_wr{
-	margin-right:40px;
+	width:70px;
+	text-align:center;
+	margin-right:50px;
+	font-weight:bold;
+	
 }
+
+
