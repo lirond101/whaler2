@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<device type="media" onchange="update(this.data)"></device>
+<video autoplay></video>
+<script>
+  function update(stream) {
+    document.querySelector('video').src = stream.url;
+  }
+  
+  function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+if (hasGetUserMedia()) {
+  // Good to go!
+} else {
+  alert('getUserMedia() is not supported in your browser');
+}
+
+</script>
+
+</body>
+</html>
