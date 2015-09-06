@@ -1,168 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-
-<!--css-->
-<link href="css/reset.css" type="text/css" rel="stylesheet">
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-
-
-<!--js-->
-<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
-
-</head>
-
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+ 
+</script>
 
 <style>
 
- #wrapper{
-	 width:1080px;
-	height:275px;
-	 background-image:url(img/bottom_bar.png);
-	 background-repeat:no-repeat;
-	 padding-top:60px;
-	position:fixed;
-	z-index:995;
-	bottom:0px;
-	text-align:center;
- }
- 
- 
-#snap{
-	text-align:center;
-}
-
-
- 
- 
-
+body, html {font-family:sans-serif; background-color:#000000;}
+div {width:80%; margin:auto; background-color:#ffffff; padding:5%; border:2px solid #990066; text-align:center; border-radius:10px;}
+canvas {padding:5%; border:2px solid #330000; background-color:#660000; border-radius:10px;}
 </style>
 
-
+</head>
 <body>
+<div>
 
 
-<div id="wrapper">
+   <input type="file" accept="image/*" onchange="picChange(event)"/>
+   
+   <p>
+Photo:
+</p>
+  <canvas id="capturedPhoto" width="500" height="400">
+  </canvas>
 
-  <div id="menu">
-  
-     <img class="icons" src="img/dismiss_photo.png" style="margin-right:270px;"> 
-    <img id="snap" src="img/take_photo.png" style="margin-top:40px; margin-left:30px;">
-    <img class="icons" src="img/approve_photo.png" style="margin-left:270px;">  
-     
-  
-  </div>
-
+ 
 </div>
 
+<script>
+function picChange(evt){ 
+//bring selected photo in
 
-<device type="media" onchange="update(this.data)"></device>
 
 
-<video autoplay style="width:1080px; height:1920px;"></video>
-<img src="">
-<canvas style="display:none;"></canvas>
+//get files captured through input
+var fileInput = evt.target.files;
 
-<!--<script>
-  var video = document.querySelector('video');
-  var canvas = document.querySelector('canvas');
-  var ctx = canvas.getContext('2d');
-  var localMediaStream = null;
-
-  function snapshot() {
-    if (localMediaStream) {
-      ctx.drawImage(video, 0, 0);
-      // "image/webp" works in Chrome.
-      // Other browsers will fall back to image/png.
-      document.querySelector('img').src = canvas.toDataURL('image/webp');
-    }
-  }
-
-  video.addEventListener('click', snapshot, false);
-
-  // Not showing vendor prefixes or code that works cross-browser.
-  navigator.getUserMedia({video: true}, function(stream) {
-    video.src = window.URL.createObjectURL(stream);
-    localMediaStream = stream;
-  }, errorCallback);
-  
-  
-    function update(stream) {
-    document.querySelector('video').src = stream.url;
-  }
-  
-  function hasGetUserMedia() {
-  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+if(fileInput.length>0){
+//get the file
 }
 
-if (hasGetUserMedia()) {
-  // Good to go!
-} else {
-  alert('getUserMedia() is not supported in your browser');
+
+//window url 
+var windowURL = window.URL || window.webkitURL; 
+
+//picture url
+var picURL = windowURL.createObjectURL(fileInput[0]);
+
+//get canvas
+var photoCanvas = document.getElementById("capturedPhoto");
+
+var ctx = photoCanvas.getContext("2d");
+
+//create image
+var photo = new Image();
+
+photo.onload = function(){
+  //draw photo into canvas when ready
+  ctx.drawImage(photo, 0, 0, 500, 400);
+};
+
+//load photo into canvas
+photo.src = picURL;
+
+//release object url
+windowURL.revokeObjectURL(picURL);
+
 }
+
 
 </script>
--->
-
-  <div id="video-container">
-    <video id="camera-stream" width="1080" height="1920" autoplay></video>
-  </div>
-  <script src="script.js"></script>
-  
-  
-  
-  <script>
-  
-  window.onload = function() {
-
-  // Normalize the various vendor prefixed versions of getUserMedia.
-  navigator.getUserMedia = (navigator.getUserMedia ||
-                            navigator.webkitGetUserMedia ||
-                            navigator.mozGetUserMedia || 
-                            navigator.msGetUserMedia);
-
-}
-
-// Check that the browser supports getUserMedia.
-// If it doesn't show an alert, otherwise continue.
-if (navigator.getUserMedia) {
-  // Request the camera.
-  navigator.getUserMedia(
-    // Constraints
-    {
-      video: true
-    },
-
-    // Success Callback
-    function(localMediaStream) {
-		
-		// Get a reference to the video element on the page.
-var vid = document.getElementById('camera-stream');
-
-// Create an object URL for the video stream and use this 
-// to set the video source.
-vid.src = window.URL.createObjectURL(localMediaStream);
-		
-		
-
-    },
-
-    // Error Callback
-    function(err) {
-      // Log the error to the console.
-      console.log('The following error occurred when trying to use getUserMedia: ' + err);
-    }
-  );
-
-} else {
-  alert('Sorry, your browser does not support getUserMedia');
-}
-  
-  </script>
 
 </body>
 </html>
