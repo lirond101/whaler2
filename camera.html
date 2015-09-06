@@ -1,79 +1,219 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style type="text/css">
- 
-</style>
-<script type="text/javascript">
- 
-</script>
+    <head>
+        <meta charset="utf-8">
+        <title>Camera API</title>
+        
+        <style>
+		
+/* General font styles */
+html {
+	font: 100%/1.3 Verdana, Helvetica, Arial, sans-serif;
+    height: 100%;
+}
 
-<style>
+body {
+	font: 70%/1.3 Verdana, Helvetica, Arial, sans-serif;
+}
 
-body, html {font-family:sans-serif; background-color:#000000;}
-div {width:80%; margin:auto; background-color:#ffffff; padding:5%; border:2px solid #990066; text-align:center; border-radius:10px;}
-canvas {padding:5%; border:2px solid #330000; background-color:#660000; border-radius:10px;}
-</style>
+h1 {
+	font: bold 2em Arial, sans-serif;
+}
+                       
+h2 {                     
+	font: bold 1.5em Arial, sans-serif;
+}
+                       
+h3 {                     
+	font: bold 1.25em Arial, sans-serif;
+}
+                       
+h4 {                     
+	font: bold 1.1em Arial, sans-serif;
+}
 
-</head>
-<body>
-<div>
+/* Default resetting */
+html, body, form, fieldset, legend, dt, dd {
+	margin: 0;
+	padding: 0;
+}
 
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
+	margin: 0 0 1em;
+	padding: 0;
+}
 
-   <input type="file" accept="image/*" onchange="picChange(event)"/>
-   
-   <p>
-Photo:
-</p>
-  <canvas id="capturedPhoto" width="500" height="400">
-  </canvas>
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0.5em;
+}
 
- 
-</div>
+h2 {
+    margin-top: 20px;
+}
 
-<script>
-function picChange(evt){ 
-//bring selected photo in
+pre {
+	font-size: 1.5em;
+}
 
+li, dd {
+	margin-left: 1.5em;
+}
 
+img {
+    border: none;
+	vertical-align: middle;
+}
 
-//get files captured through input
-var fileInput = evt.target.files;
+/* Basic element styles */
+a {
+	color: #000;
+}
 
-if(fileInput.length>0){
-//get the file
+a:hover {
+	text-decoration: underline;
+}
+
+html {
+	color: #000;
+	min-height: 100%;	
+}
+
+body {
+    min-height: 100%;
+    background-image: -moz-linear-gradient(top, #ccc, #fff);
+    background-image: -webkit-linear-gradient(top, #ccc, #fff);
+    padding-top: 20px;
 }
 
 
-//window url 
-var windowURL = window.URL || window.webkitURL; 
+body {
+	margin-bottom: 30px;
+}
 
-//picture url
-var picURL = windowURL.createObjectURL(fileInput[0]);
-
-//get canvas
-var photoCanvas = document.getElementById("capturedPhoto");
-
-var ctx = photoCanvas.getContext("2d");
-
-//create image
-var photo = new Image();
-
-photo.onload = function(){
-  //draw photo into canvas when ready
-  ctx.drawImage(photo, 0, 0, 500, 400);
-};
-
-//load photo into canvas
-photo.src = picURL;
-
-//release object url
-windowURL.revokeObjectURL(picURL);
-
+ul {
+    margin: 10px 0;
 }
 
 
-</script>
+/* Structure */
+.container {
+    width: 560px;
+	min-height: 600px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: none;
+	margin: 0 auto;
+	padding: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 1px 1px 10px #000;
+	-webkit-box-shadow: 1px 1px 5px #000;
+	box-shadow: 1px 1px 10px #000;
+}
 
-</body>
+@media screen and (max-width: 320px) {
+    #container {
+        width: 280px;
+        padding: 10px;
+    }
+}
+
+button {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#error {
+    color: #f00;
+}
+
+.footer {
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 10px;
+}
+		</style>
+        
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h1>Camera API</h1>
+
+            <section class="main-content">
+                <p>A demo of the Camera API, currently implemented in Firefox and Google Chrome on Android. Choose to take a picture with your device's camera and a preview will be shown through createObjectURL or a FileReader object (choosing local files supported too).</p>
+                
+                <p>
+                    <input type="file" id="take-picture" accept="image/*">
+                </p>
+
+                <h2>Preview:</h2>
+                <p>
+                    <img src="about:blank" alt="" id="show-picture">
+                </p>
+
+                <p id="error"></p>
+
+            </section>
+
+            <p class="footer">All the code is available in the <a href="https://github.com/robnyman/robnyman.github.com/tree/master/camera-api">Camera API repository on GitHub</a>.</p>
+        </div>
+
+
+        <script>
+		
+(function () {
+    var takePicture = document.querySelector("#take-picture"),
+        showPicture = document.querySelector("#show-picture");
+
+    if (takePicture && showPicture) {
+        // Set events
+        takePicture.onchange = function (event) {
+            // Get a reference to the taken picture or chosen file
+            var files = event.target.files,
+                file;
+            if (files && files.length > 0) {
+                file = files[0];
+                try {
+                    // Get window.URL object
+                    var URL = window.URL || window.webkitURL;
+
+                    // Create ObjectURL
+                    var imgURL = URL.createObjectURL(file);
+
+                    // Set img src to ObjectURL
+                    showPicture.src = imgURL;
+
+                    // Revoke ObjectURL after imagehas loaded
+                    showPicture.onload = function() {
+                        URL.revokeObjectURL(imgURL);  
+                    };
+                }
+                catch (e) {
+                    try {
+                        // Fallback if createObjectURL is not supported
+                        var fileReader = new FileReader();
+                        fileReader.onload = function (event) {
+                            showPicture.src = event.target.result;
+                        };
+                        fileReader.readAsDataURL(file);
+                    }
+                    catch (e) {
+                        // Display error message
+                        var error = document.querySelector("#error");
+                        if (error) {
+                            error.innerHTML = "Neither createObjectURL or FileReader are supported";
+                        }
+                    }
+                }
+            }
+        };
+    }
+})();
+		</script>
+
+
+    </body>
 </html>
