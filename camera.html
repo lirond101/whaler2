@@ -1,13 +1,12 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Camera API</title>
-        
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
         <style>
-		
-/* General font styles */
-html {
+		html {
 	font: 100%/1.3 Verdana, Helvetica, Arial, sans-serif;
     height: 100%;
 }
@@ -134,7 +133,6 @@ button {
     padding-top: 10px;
 }
 		</style>
-        
     </head>
 
     <body>
@@ -162,76 +160,69 @@ button {
         </div>
 
 
-<script type="text/javascript" charset="utf-8">
-
-
-
-var pictureSource;   // Picture source
-
-var destinationType; // Sets the format of returned value 
-
-// Wait for PhoneGap to connect with the device
-
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
-// PhoneGap is ready to be used!
-
-function onDeviceReady() 
-
-{
-
-
-   pictureSource = navigator.camera.PictureSourceType;
-
-    destinationType = navigator.camera.DestinationType;
-
-
+        <script src="js/base.js"></script>
+        
+        
+        <script>
+		(function () {
+    var takePicture = document.querySelector("#take-picture"),
+        showPicture = document.querySelector("#show-picture");
+		
+		
+		function getPhoto(source) {
+  // Retrieve image file location from specified source
+  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    destinationType: destinationType.DATA_URL, 
+    sourceType: source });
 }
+		
+		
 
-function capturePhoto() {
+    if (takePicture && showPicture) {
+        // Set events
+        takePicture.onchange = function (event) {
+            // Get a reference to the taken picture or chosen file
+            var files = event.target.files,
+                file;
+            if (files && files.length > 0) {
+                file = files[0];
+                try {
+                    // Get window.URL object
+                    var URL = window.URL || window.webkitURL;
 
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 25, destinationType: 
-Camera.DestinationType.FILE_URI });
+                    // Create ObjectURL
+                    var imgURL = URL.createObjectURL(file);
 
-}
+                    // Set img src to ObjectURL
+                    showPicture.src = imgURL;
 
-function onPhotoURISuccess(imageURI) {
-
-    createFileEntry(imageURI);
-}
-
-function createFileEntry(imageURI) {
-
-    window.resolveLocalFileSystemURI(imageURI, copyPhoto, fail);    
-}
-
-function copyPhoto(fileEntry) {
-
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) { 
-        fileSys.root.getDirectory("photos", {create: true, exclusive: false}, 
-
-function(dir) { 
-
-  fileEntry.copyTo(dir, "file.jpg", onCopySuccess, fail); 
-
-            }, fail); 
-    }, fail); 
-}
-
-function onCopySuccess(entry) {
-
-    console.log(entry.fullPath)
-}
-
-function fail(error) {
-
-    console.log(error.code);
-
-}
-
-    </script>
+                    // Revoke ObjectURL after imagehas loaded
+                    showPicture.onload = function() {
+                        URL.revokeObjectURL(imgURL);  
+                    };
+                }
+                catch (e) {
+                    try {
+                        // Fallback if createObjectURL is not supported
+                        var fileReader = new FileReader();
+                        fileReader.onload = function (event) {
+                            showPicture.src = event.target.result;
+                        };
+                        fileReader.readAsDataURL(file);
+                    }
+                    catch (e) {
+                        // Display error message
+                        var error = document.querySelector("#error");
+                        if (error) {
+                            error.innerHTML = "Neither createObjectURL or FileReader are supported";
+                        }
+                    }
+                }
+            }
+        };
+    }
+})();
+		</script>
 
 
     </body>
